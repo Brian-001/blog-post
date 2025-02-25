@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -7,6 +8,5 @@ use Inertia\Inertia;
 //     return view('welcome');
 // });
 
-Route::get('/', function(){
-    return Inertia::render('Home', ['name' => 'Brian Karanja']);
-});
+Route::get('/', [PostController::class, 'index']);
+Route::resource('posts', PostController::class)->except('index');

@@ -14,7 +14,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': '/resources/ts',
+            '@': '/resources/js',
         },
     },
 });
