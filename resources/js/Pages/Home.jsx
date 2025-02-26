@@ -1,7 +1,10 @@
 import { Link } from "@inertiajs/react";
+import { useRoute } from "../../../vendor/tightenco/ziggy";
 
 
 export default function Home({posts}){
+    
+    const route = useRoute();
     
     return (
         <>
@@ -12,7 +15,9 @@ export default function Home({posts}){
                         <span>Posted on: </span>
                         <span>{ new Date(post.created_at).toLocaleTimeString() }</span>
                     </div>
-                    <p className="font-medium">{post.body}</p>
+                    <p className="font-medium mb-2">{post.body}</p>
+                    {/* <Link href={`/posts/${post.id}`} className="text-white bg-blue-400 py-2 px-4 rounded-md mt-2">Read More..</Link> */}
+                    <Link href={route('posts.show', post)} className="text-white bg-blue-400 py-2 px-4 rounded-md mt-2">Read More..</Link>
                 </div>
             ))}
 
