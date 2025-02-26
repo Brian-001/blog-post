@@ -23,6 +23,7 @@ class PostController extends Controller
     public function create()
     {
         //
+        return inertia('Create');
     }
 
     /**
@@ -31,6 +32,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        sleep(2);
+        $fields = $request->validate([
+            "body" => ['required'],
+        ]);
+
+        Post::create($fields);
+
+        // dd($request);
+        return redirect('/');
     }
 
     /**
