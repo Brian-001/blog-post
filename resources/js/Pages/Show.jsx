@@ -1,8 +1,9 @@
-import { useForm } from "@inertiajs/react"
+import { Link, useForm } from "@inertiajs/react"
 import { route, useRoute } from "../../../vendor/tightenco/ziggy";
 
 export default function Show({post}){
-
+    
+    
     const {delete: destroy} = useForm();
     function submit(e) {
 
@@ -23,6 +24,7 @@ export default function Show({post}){
                     <form onSubmit={submit}>
                         <button className="bg-red-400 py-2 px-4 rounded-md text-white cursor-pointer hover:bg-red-500" >Delete</button>
                     </form>
+                    <Link href={route('posts.edit', post)} className="bg-green-400 py-2 px-4 rounded-md text-white cursor-pointer hover:bg-green-500" >Update</Link>
                 </div>
             </div>
         </>

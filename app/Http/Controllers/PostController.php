@@ -55,17 +55,27 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Post $post)
     {
         //
+        return inertia('Edit', ['post' => $post]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
         //
+        // dd($post);
+        sleep(1);
+        $fields = $request->validate([
+            "body" => ['required'],
+        ]);
+
+        $post->update($fields);
+
+        return redirect('/')->with('message', 'Post updated successfully');
     }
 
     /**
@@ -77,6 +87,6 @@ class PostController extends Controller
         // dd($post);
         $post->delete();
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Post  deleted successfully');
     }
 }
